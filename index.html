@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting to Cloudstream</title>
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const redirectto = params.get("redirectto");
+
+      if (!redirectto) {
+        document.body.innerText = "Missing uri";
+        return;
+      }
+
+      try {
+        const decodedUri = decodeURIComponent(redirectto);
+        window.location.href = decodedUri;
+      } catch (e) {
+        document.body.innerText = "Error decoding Uri";
+        console.error(e);
+      }
+    };
+  </script>
+</head>
+<body>
+  Redirecting to Cloudstream...
+</body>
+</html>
